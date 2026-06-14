@@ -39,23 +39,44 @@ export default function App() {
     "Tools": ["Git", "GitHub", "VS Code", "Jupyter Notebook", "Power BI", "Excel"],
   };
 
-  const projects = [
+  const projects = {
+  "💻 Software Development": [
     {
       title: "Weather App",
       desc: "Real-time weather app using React, Tailwind CSS and OpenWeatherMap API with dynamic backgrounds.",
       tags: ["React", "Tailwind", "API"],
       icon: "🌤️",
       color: "from-blue-500 to-indigo-600",
-      github: "https://github.com/rihhanna/weather-app",
-      live: "#",
+      github: "https://github.com/rihhanna/weather-app2",
+      live: "https://weather-app2-gilt.vercel.app/",
     },
+    {
+    title: "Doctor Appointment System",
+    desc: "Full-stack web app for booking and managing doctor appointments with patient records, scheduling, and admin dashboard.",
+    tags: ["Django", "React", "PostgreSQL"],
+    icon: "🩺",
+    color: "from-teal-500 to-cyan-600",
+    github: "https://github.com/rihhanna/Doctor-Appointment-Systemm",
+    live: null,
+  },
+  {
+    title: "Online Book ",
+    desc: "E-commerce platform for browsing, searching, and purchasing books with cart, checkout, and order management.",
+    tags: ["ASP.NET", "C#", "REST API"],
+    icon: "📚",
+    color: "from-rose-500 to-orange-600",
+    github: "https://github.com/https://github.com/rihhanna/Online-Book",
+    live: null,
+  },
+  ],
+  "📊 Data Analyst Projects": [
     {
       title: "Telco Customer Churn Analysis",
       desc: "End-to-end data analysis project predicting customer churn using ML classification models.",
       tags: ["Python", "Pandas", "Scikit-learn"],
       icon: "📊",
       color: "from-purple-500 to-pink-600",
-      github: "https://github.com/rihhanna",
+      github: "https://github.com/rihhanna/telco-customer-churn-analysis",
       live: null,
     },
     {
@@ -64,7 +85,7 @@ export default function App() {
       tags: ["Power BI", "Excel", "Python"],
       icon: "📈",
       color: "from-green-500 to-teal-600",
-      github: "https://github.com/rihhanna",
+      github: "https://github.com/rihhanna/sales-performance-dashboard",
       live: null,
     },
     {
@@ -73,7 +94,18 @@ export default function App() {
       tags: ["Python", "Pandas", "Matplotlib"],
       icon: "🦠",
       color: "from-red-500 to-orange-600",
-      github: "https://github.com/rihhanna",
+      github: "https://github.com/rihhanna/covid-19-data-pipeline",
+      live: null,
+    },
+  ],
+  "🤖 Machine Learning Projects": [
+    {
+      title: "House Price Prediction",
+      desc: "ML regression model predicting house prices based on features like location, size, and amenities.",
+      tags: ["Python", "Scikit-learn", "Regression"],
+      icon: "🏠",
+      color: "from-indigo-500 to-purple-600",
+      github: "https://github.com/rihhanna/machine-learning-projects",
       live: null,
     },
     {
@@ -82,10 +114,11 @@ export default function App() {
       tags: ["Python", "Clustering", "ML"],
       icon: "🎯",
       color: "from-amber-500 to-yellow-600",
-      github: "https://github.com/rihhanna",
-      live: null,
+      github: "https://github.com/rihhanna/customer-segmentation",
+      live: "https://customer-segmentation-dashboard-qjhp.onrender.com/",
     },
-  ];
+  ],
+};
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -229,34 +262,42 @@ export default function App() {
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          My <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p) => (
-            <div key={p.title} className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-purple-700 transition group">
-              <div className={`h-2 bg-gradient-to-r ${p.color}`} />
-              <div className="p-6">
-                <div className="text-4xl mb-3">{p.icon}</div>
-                <h3 className="text-lg font-bold mb-2 group-hover:text-purple-400 transition">{p.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">{p.desc}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {p.tags.map((tag) => (
-                    <span key={tag} className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">{tag}</span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <a href={p.github} target="_blank" rel="noreferrer" className="text-sm text-gray-400 hover:text-white transition">GitHub →</a>
-                  {p.live && (
-                    <a href={p.live} target="_blank" rel="noreferrer" className="text-sm text-purple-400 hover:text-purple-300 transition">Live Demo →</a>
-                  )}
-                </div>
+      {/* PROJECTS */}
+<section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
+  <h2 className="text-3xl font-bold text-center mb-4">
+    My <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
+  </h2>
+  <p className="text-center text-gray-400 mb-12">A collection of my work across software development, data analysis, and machine learning</p>
+
+  {Object.entries(projects).map(([category, items]) => (
+    <div key={category} className="mb-16">
+      <h3 className="text-xl font-bold mb-6 text-purple-400">{category}</h3>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {items.map((p) => (
+          <div key={p.title} className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:border-purple-700 transition group">
+            <div className={`h-2 bg-gradient-to-r ${p.color}`} />
+            <div className="p-6">
+              <div className="text-4xl mb-3">{p.icon}</div>
+              <h3 className="text-lg font-bold mb-2 group-hover:text-purple-400 transition">{p.title}</h3>
+              <p className="text-gray-400 text-sm mb-4 leading-relaxed">{p.desc}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {p.tags.map((tag) => (
+                  <span key={tag} className="text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">{tag}</span>
+                ))}
+              </div>
+              <div className="flex gap-3">
+                <a href={p.github} target="_blank" rel="noreferrer" className="text-sm text-gray-400 hover:text-white transition">GitHub →</a>
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noreferrer" className="text-sm text-purple-400 hover:text-purple-300 transition">Live Demo →</a>
+                )}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</section>
 
       {/* EDUCATION */}
       <section id="education" className="py-24 px-6 bg-gray-900">
