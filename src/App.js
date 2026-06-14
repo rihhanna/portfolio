@@ -120,12 +120,27 @@ export default function App() {
   ],
 };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setFormSent(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setFormSent(false), 4000);
-  };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  try {
+    const res = await fetch("https://formspree.io/f/mrevrqad", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (res.ok) {
+      setFormSent(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setFormSent(false), 4000);
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  } catch (error) {
+    alert("Network error. Please try again.");
+  }
+};
 
   return (
     <div className="bg-gray-950 text-white font-sans scroll-smooth">
